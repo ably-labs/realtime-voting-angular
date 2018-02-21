@@ -10,10 +10,7 @@ declare var Ably: any;
 })
 export class VoteChartComponent implements OnInit {
 
-  	// Attributes
-
-
-	// Ably attributes
+  // Attributes
   ably : any
   receiveChannel : any
   chart = []
@@ -23,51 +20,49 @@ export class VoteChartComponent implements OnInit {
 
 
 	ngOnInit() {
-		this.ably = new Ably.Realtime('6QdTiA.O9vBCw:8glD3fRTNhSEVJC5')
-
-	
+        this.ably = new Ably.Realtime('<INSERT-YOUR-API-KEY-HERE')
+        //Attach to channel
 		this.receiveChannel = this.ably.channels.get('vote-channel')
-        //console.log(this.receiveChannel)
 		// Ably Subscription
 		this.receiveChannel.subscribe("update", function(message: any) {
-        //console.log(JSON.stringify(message.data))
-        if(message.data.vote == 1)
-            this.yes_votes++
-        else if(message.data.vote == -1)
+
+            if(message.data.vote == 1)
+                this.yes_votes++
+            else if(message.data.vote == -1)
                 this.no_votes++
-        else if(message.data.vote == 0)
+            else if(message.data.vote == 0)
                 this.maybe_votes++
-        this.chart= new Chart('canvas', {
-        type: 'bar',
-        data: {
-          labels: ["Yes", "No", "MayBe"],
-          datasets: [{
-              label: 'Say yes!',
-              data: [this.yes_votes, this.no_votes, this.maybe_votes],
-              backgroundColor: [
-                  'rgba(52, 217, 118, 1)',
-                  'rgba(217, 63, 52, 1)',
-                  'rgba(230, 127, 0, 1)'
-              ],
-              borderColor: [
-                  'rgba(52, 217, 118, 1)',
-                  'rgba(217, 63, 52, 1)',
-                  'rgba(230, 127, 0, 1)'
-              ],
-              borderWidth: 1
-          }]
-        },
-        options: {
-          animation: false,
-          scales: {
-              yAxes: [{
-                  ticks: {
-                      beginAtZero:true
-                  }
-              }]
-          }
-      }
-      })
+            this.chart= new Chart('canvas', {
+                type: 'bar',
+                data: {
+                    labels: ["Yes", "No", "MayBe"],
+                    datasets: [{
+                        label: 'Say yes!',
+                        data: [this.yes_votes, this.no_votes, this.maybe_votes],
+                        backgroundColor: [
+                            'rgba(52, 217, 118, 1)',
+                            'rgba(217, 63, 52, 1)',
+                            'rgba(230, 127, 0, 1)'
+                        ],
+                        borderColor: [
+                            'rgba(52, 217, 118, 1)',
+                            'rgba(217, 63, 52, 1)',
+                            'rgba(230, 127, 0, 1)'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    animation: false,
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero:true
+                            }
+                        }]
+                    }
+                }
+            })
 		}.bind(this));
-  }
+    } 
 }
