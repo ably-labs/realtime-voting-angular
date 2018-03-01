@@ -20,7 +20,7 @@ export class VoteChartComponent implements OnInit {
 
 
 	ngOnInit() {
-        this.ably = new Ably.Realtime('INSERT-YOUR-API-KEY-HERE')
+        this.ably = new Ably.Realtime('6QdTiA.O9vBCw:8glD3fRTNhSEVJC5')
         //Attach to channel
 		this.receiveChannel = this.ably.channels.get('vote-channel')
 		// Ably Subscription
