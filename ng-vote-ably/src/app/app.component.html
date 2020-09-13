@@ -1,18 +1,15 @@
-<div style="text-align:center">
-  <h1>
-    <font face="raleway" color="#007acc">
-        Hello {{ title }}!<br/>
-    </font>
-  </h1>
-  <h2>
-      <font face="raleway" color="#29293d">
-          Is this conference awesome?
-      </font>
-  </h2>
-       
-    
-  
-</div>
+<mat-toolbar>
+    <img src="../assets/images/logo.png" style="min-width: 10px;max-width: 50px;" alt="">
+    <span style="font-weight: 100; font-style: italic;">{{ title }}</span>
+  <span class="example-spacer"></span>
+  <button
+    mat-icon-button
+    class="button-icon"
+    [style.color]="connectionColor"
+    aria-label="Example icon-button with share icon"
+  >
+    {{ connectionState }}
+  </button>
+</mat-toolbar>
 <app-vote-chart>
-  <app-chart-logic></app-chart-logic>
 </app-vote-chart>
