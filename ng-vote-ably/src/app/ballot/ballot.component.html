@@ -1,0 +1,8 @@
+<div class="question">
+    <h1>How has 2020 been so far, to you?</h1>
+</div>
+<div class="container">
+    <button mat-raised-button class="success"  (click)="yes()" [disabled]="disabled">Good</button>
+    <button mat-raised-button color="warn"  (click)="no()" [disabled]="disabled">Bad</button>
+    <button mat-raised-button  class="warm" (click)="maybe()" [disabled]="disabled">Just there</button>
+</div>

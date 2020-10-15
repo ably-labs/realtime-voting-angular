@@ -9,20 +9,21 @@ import { AblyRealtime } from '../util/ably';
 })
 export class VoteChartComponent implements OnInit {
   // Attributes
-  ably = new AblyRealtime();
   chart = [];
   yes_votes: number = 0;
   no_votes: number = 0;
   maybe_votes: number = 0;
   connectionState: string;
   connectionColor: string;
+  ably = new AblyRealtime();
 
   ngOnInit() {
     //Attach to channel
-    const receiveChannel = this.ably.channels.get('vote-channel');
+    const receiveChannel = this.ably.channels.get('vote-channel', {
+      params: {rewind: '20'}
+    });
     // Ably Subscription
     receiveChannel.subscribe(
-      'update',
       function (message: any) {
         switch (message.data.vote) {
           case 1:
@@ -39,10 +40,10 @@ export class VoteChartComponent implements OnInit {
         this.chart = new Chart('canvas', {
           type: 'bar',
           data: {
-            labels: ['Yes', 'No', 'MayBe'],
+            labels: ['Good', 'Bad', 'Just there'],
             datasets: [
               {
-                label: 'Say yes!',
+                label: '2020 Poll',
                 data: [this.yes_votes, this.no_votes, this.maybe_votes],
                 backgroundColor: [
                   'rgba(52, 217, 118, 1)',
@@ -54,12 +55,11 @@ export class VoteChartComponent implements OnInit {
                   'rgba(217, 63, 52, 1)',
                   'rgba(230, 127, 0, 1)',
                 ],
-                borderWidth: 1,
               },
             ],
           },
           options: {
-            animation: false,
+            animation: true,
             scales: {
               yAxes: [
                 {

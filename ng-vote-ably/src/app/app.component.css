@@ -1,8 +1,17 @@
 .example-spacer {
-    flex: 1 1 auto;
-  }
+  flex: 1;
+}
 
-  .button-icon {
-      border: none;
-      outline: none;
-  }
+.button-icon {
+  border: none;
+  outline: none;
+}
+
+.left {
+  left: 55%;
+}
+
+.title-href {
+    text-decoration-line: none;
+    color: #eb7508;
+}

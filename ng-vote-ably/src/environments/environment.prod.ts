@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  ablyApiKey: 'AP_KEY'
+  ablyApiKey: 'API_KEY'
 };

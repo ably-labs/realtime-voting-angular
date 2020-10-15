@@ -7,12 +7,12 @@ interface Connection {
 }
 
 interface Messaging {
-  subscribe: (topic: string, callback: Function) => {};
-  publish: (topic: string, publisher: Function) => {}
+  subscribe: (topic?: string, callback?: Function) => {};
+  publish: (topic: string, data: {}, callback?: Function) => {}
 }
 
 type Channels =  {
-  get: (channel: string) => Messaging 
+  get: (channel: string, options?: any) => Messaging 
 }
 
 export class AblyRealtime {
@@ -23,3 +23,5 @@ export class AblyRealtime {
   }
 
 }
+
+export default new AblyRealtime();

@@ -1,23 +1,21 @@
 import { Component , OnInit} from '@angular/core';
-import { AblyRealtime, AblyConnectionState } from './util/ably';
-
-declare var Ably: any;
-
+import { AblyConnectionState } from './util/ably';
+import Ably from './util/ably';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit  {
-  title = 'Simple ably voting app!';
+  title = 'Realtime voting app - powered by Ably';
   connectionState: string;
   connectionColor: string;
-  ably = new AblyRealtime();
 
 
   ngOnInit() {    
-    this.ably.connection.on((connectionState: AblyConnectionState) => {
+    Ably.connection.on((connectionState: AblyConnectionState) => {
       this.connectionState = connectionState.current;
+      console.log(connectionState);
       switch (this.connectionState) {
         case 'connecting':
           this.connectionColor = 'yellow';
