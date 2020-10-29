@@ -5,5 +5,5 @@
 
 export const environment = {
   production: false,
-  ablyApiKey: 'API_KEY'
+  ablyApiKey: 'Uxw9rw.Be1ipQ:G2Z3CH4nP1jIrgfN'
 };
