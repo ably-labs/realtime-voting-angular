@@ -34,6 +34,6 @@ export class BallotComponent implements OnInit {
   }
 
   errCallback(err: Error){
-    window.alert(err.message);
+    window.alert(err);
   }
 }
