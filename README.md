@@ -83,25 +83,30 @@ _Voila! your application is up and running!_
 
 You can read up on how the [angular project file structure](https://angular.io/guide/file-structure#workspace-configuration-files) to gain granular of the entire project.
 
-'environment.ts' && 'environment.prod.ts'
+#### Environment
+**`environment.ts` && `environment.prod.ts`**
 This file store environment variables. You'll also have to add your `ABLY_API_KEY` in both files. Update `.prod` when you're all good and ready to deploy to production.
 
-`app.*.ts`: This the main entry point for your application. Everything starts here. In `app.module.ts` file, you load all application components such as the voting component and ballot component. External libraries like `angular-material` also load its module importation in the file.
+#### App component
+**`app.*.ts`**: This the main entry point for your application. Everything starts here. In `app.module.ts` file, you load all application components such as the voting component and ballot component. External libraries like `angular-material` also load its module importation in the file.
 
-`app.component.ts` initialise the application. For example, in this project, we initialised the `connection state` of Ably here in the `ngOnInit` function.
+**`app.component.ts`**: initialise the application. For example, in this project, we initialised the `connection state` of Ably here in the `ngOnInit` function.
 
-`app.component.html`: this is the application's `HTML` semantics root file. As you get familiar with the project, you'll notice every other component's `.html` gets called in this file.
+**`app.component.html`**: this is the application's `HTML` semantics root file. As you get familiar with the project, you'll notice every other component's `.html` gets called in this file.
 
-The ballot folder (component): this is the ballot component that handles all voting events. Such as click on `yes`, `no` or `maybe`. The ballot component also takes care of publishing votes to an Ably channel that laters appears in the voting chart component.
+#### **The ballot folder (component)**: 
+this is the ballot component that handles all voting events. Such as click on `yes`, `no` or `maybe`. The ballot component also takes care of publishing votes to an Ably channel that laters appears in the voting chart component.
 
-`ballot.component.ts`: You can consider this the ballot's component controller file. From interactive button clicks to publishing votes to the Ably channel is handled here.
+**`ballot.component.ts`**: You can consider this the ballot's component controller file. From interactive button clicks to publishing votes to the Ably channel is handled here.
 
-`ballot.component.html`: this the presentation layer of the ballot component. HTML semantics and connecting controller events get handled here.
+**`ballot.component.html`**: this the presentation layer of the ballot component. HTML semantics and connecting controller events get handled here.
 
-The vote-chart folder (component): the `vote-chart` component handles the graphical representation of on-going votes. The `vote-chart` component also subscribes to the Ably channel publishing votes, as earlier mentioned in ballot component above.
+#### **The vote-chart folder (component)**: 
+the `vote-chart` component handles the graphical representation of on-going votes. The `vote-chart` component also subscribes to the Ably channel publishing votes, as earlier mentioned in ballot component above.
 
-`vote-chart.component.ts`: Generally, most angular developers considers the `*.component.ts` the Controller file, (if you're thinking from an MVC (model view controller) point of view) and the `*.component.html` the View file. The `vote-char`t `.component.ts` file handles subscribing gracefully to the channel and continuously listen for when there's a new vote and then adjust the graph accordingly.
+**`vote-chart.component.ts`**: Generally, most angular developers considers the `*.component.ts` the Controller file, (if you're thinking from an MVC (model view controller) point of view) and the `*.component.html` the View file. The `vote-chart.component.ts` file handles subscribing gracefully to the channel and continuously listen for when there's a new vote and then adjust the graph accordingly.
 
-`vote-chart.component.html`: this the presentation layer of the chart component. You can read up on [chart.js](http://chartjs.org) to understand the graph implementation in this file.
+**`vote-chart.component.html`**: this the presentation layer of the chart component. You can read up on [chart.js](http://chartjs.org) to understand the graph implementation in this file.
 
-Finally, `ably.ts` in the util folder. The util is Not a component. However, the `util` folder holds `ably.ts` - an essential assets file. `ably.ts` implementations some Ably abstraction to ease implementation across other components.
+#### Finally, `ably.ts` in the **util** folder: 
+The util is Not a component. However, the `util` folder holds `ably.ts` - an essential assets file. `ably.ts` implementations some Ably abstraction to ease implementation across other components.
