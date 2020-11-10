@@ -1,0 +1,27 @@
+.container {
+    display: grid;
+    grid-template-columns: repeat(3, 1.2fr);
+    grid-column-gap: 25px;
+    grid-row-gap: 20px;
+    margin: 20px 50px;
+}
+
+.success {
+    background: #4CAF50;
+    color: #fff;
+}
+
+.warm {
+    background-color: rgba(230, 127, 0, 1);
+    color: #fff;
+}
+
+.question {
+    justify-content: center;
+    top: 10px;
+    margin: 15px 0px 0px 0px;
+}
+ 
+.question h1 {
+    text-align: center;
+}

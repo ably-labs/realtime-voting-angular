@@ -1,0 +1,15 @@
+<mat-toolbar>
+    <img src="../assets/images/logo.png" style="min-width: 10px;max-width: 50px;" alt="">
+    <a href="https://ably.io" referrerpolicy="no-referrer" target="_blank" class="title-href"><span style="font-weight: 100;">{{ title }}</span></a>
+    <button
+      mat-button
+      class="button-icon left"
+      [style.color]="connectionColor"
+      aria-label="Example icon-button with share icon"
+    >
+     Ably Connection Status: {{ connectionState }}
+    </button>
+</mat-toolbar>
+<app-ballot></app-ballot>
+<app-vote-chart>
+</app-vote-chart>
